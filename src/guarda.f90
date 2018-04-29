@@ -102,6 +102,7 @@ subroutine guarda_emisiones
   call check( nf90_put_att(ncid, nf90_global, "ISURBAN",isurban))
   call check( nf90_put_att(ncid, nf90_global, "NUM_LAND_CAT",num_land_cat))
   call check( nf90_put_att(ncid, nf90_global, "ISOILWATER",isoilwater))
+  call check( nf90_put_att(ncid, nf90_global, "GRID_ID",grid_id))
   call check( nf90_put_att(ncid, NF90_GLOBAL, "MECHANISM","MOZART"))
   call check( nf90_put_att(ncid, NF90_GLOBAL, "CREATION_DATE",hoy))
   !  Define las variables

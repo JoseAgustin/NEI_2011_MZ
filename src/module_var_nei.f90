@@ -40,7 +40,7 @@ module var_nei
   character (len=19) :: current_date,mecha
 
   ! Domain Variables
-  common /domain/ NRADM,zlev,dx,dy,Title
+  common /domain/ NRADM,zlev,dx,dy,Title,sdim
   common /date/ hh,id_grid,current_date,cday,mecha,cname,Times
   common /wrf/ julyr,julday,mapproj,iswater,islake,isice,isurban,isoilwater,&
   cenlat,cenlon,trulat1, trulat2,moadcenlat,stdlon,pollat,pollon,num_land_cat,&
