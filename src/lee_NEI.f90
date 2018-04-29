@@ -27,7 +27,7 @@ implicit none
   end if
   print *," "
   print *," ***** ",nfile," *****"
-  OPEN(19,FILE=nfile,FORM='UNFORMATTED',CONVERT="BIG_ENDIAN")
+  OPEN(19,FILE=nfile,FORM='UNFORMATTED',CONVERT="BIG_ENDIAN",STATUS='OLD')
   read(19) NRADM
   if (.not. allocated(ename1)) allocate(ename1(NRADM))
   if (.not. allocated(ename)) allocate(ename(NRADM))

@@ -124,7 +124,7 @@ subroutine guarda_emisiones
   call check( nf90_put_att(ncid, id_varlat, "axis", "Y") )
 
   do i=1,nradm
-  if(i.lt.22 .or.i.gt.37) then
+  if(i.lt.29 .or.i.gt.40) then
   call crea_attr(ncid,4,dimids4,ename(i),cname(i),id_var(i))
   else
   call crea_attr2(ncid,4,dimids4,ename(i),cname(i),id_var(i))
