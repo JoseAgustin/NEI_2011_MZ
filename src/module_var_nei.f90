@@ -9,7 +9,7 @@ module var_nei
 ! Emissions Inventories Variables
   integer :: zlev       ! Layer of emission (1 to 8) 8 lower 1 upper
   integer :: nh,hh,NRADM
-  parameter(nh=24,radm=39)
+  parameter(nh=24,radm=41)
   integer :: NDIMS
   parameter (NDIMS=6)
   real,allocatable:: EMISS3D(:,:,:,:,:) ! emissions by nx,ny,level,nh,radm
@@ -30,11 +30,11 @@ module var_nei
   character (len=19),dimension(NDIMS) ::sdim=(/"Time               ",&
   & "DateStrLen         ","west_east          ","south_north        ",&
   &"bottom_top         ","emissions_zdim_stag"/)
-  character(len= 19),dimension(radm):: cname=(/'Benzaldehyde','Methanol',&
-  'Propylene','Ethanol','Sulfur Dioxide','Nitrogen Oxide','Acetaldehyde',&
+  character(len= 19),dimension(radm):: cname=(/'Benzaldehyde','Methanol','Propylene',&
+  'Ethanol','Methacrolein','Sulfur Dioxide','Nitrogen Oxide','Acetaldehyde',&
   'Formaldehyde','Formic Acid','Acetylene','Cresol','Ammonia','Propane',&
-  'lumped alkanes C>3','Methyl ethyl ket','Methyl vinyl ket','Phenol',&
-  'Ethane','Carbon Monoxide','Ethene','Lumped alkenes C>3',&
+  'lumped alkanes C>3','Methyl ethyl ket','Methyl vinyl ket','Phenol','Glyoxal',&
+  'Ethane','Carbon Monoxide','Ethene','Lumped alkenes2 C>3',&
   'Methyl glyoxal','Toluene','m-/o-/p-xylenes','Acetone','Benzene',&
   'Isoprene','Methane','PM25I','PM25J',&
   'SulfatesI','SulfatesJ','Nitrates I','Nitrates J','OrganicI','OrganicJ',&

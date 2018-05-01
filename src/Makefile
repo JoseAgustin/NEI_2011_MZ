@@ -4,16 +4,13 @@
 FCLIB = -L$(NETCDF)/lib -I$(NETCDF)/include -lnetcdff -axAVX
 FC = ifort
 objetcs = module_var_nei.o lee_NEI.o lee_wrfinput.o guarda.o convierte.o
-DEPS = var_nei.mod
+DEPS = 
 # Makefile
 
 convert.exe: $(objetcs)
 	$(FC) -o $@   $(FCLIB) $^
 
-%.mod:%.90 %.o
-	$(FC) -c -o $@ $(FCLIB) $^
-
-%.o:%.f90 $(DEPS)
+%.o: %.f90 
 	$(FC) -c -o $@ $(FCLIB) $^
 
 clean:

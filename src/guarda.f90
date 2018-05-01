@@ -157,7 +157,7 @@ subroutine guarda_emisiones
           call check( nf90_put_var(ncid, id_varlong,xlon,start=(/1,1,it-11/)) )
           call check( nf90_put_var(ncid, id_varlat,xlat,start=(/1,1,it-11/)) )
 
-endif
+        endif
       end if   ! for kk == 1
       do i=1, dim(3)
         do j=1, dim(4)
