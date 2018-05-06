@@ -9,7 +9,7 @@ module var_nei
 ! Emissions Inventories Variables
   integer :: zlev       ! Layer of emission (1 to 8) 8 lower 1 upper
   integer :: nh,hh,NRADM
-  parameter(nh=24,radm=41)
+  parameter(nh=24,radm=42)
   integer :: NDIMS
   parameter (NDIMS=6)
   real,allocatable:: EMISS3D(:,:,:,:,:) ! emissions by nx,ny,level,nh,radm
@@ -38,7 +38,7 @@ module var_nei
   'Methyl glyoxal','Toluene','m-/o-/p-xylenes','Acetone','Benzene',&
   'Isoprene','Methane','PM25I','PM25J',&
   'SulfatesI','SulfatesJ','Nitrates I','Nitrates J','OrganicI','OrganicJ',&
-  'Elemental C I ','Elemental C J','PM_10'/)
+  'Elemental C I ','Elemental C J','PM_10','Nitrogen Dioxide'/)
   character (len=19) :: current_date,mecha
 
   ! Domain Variables

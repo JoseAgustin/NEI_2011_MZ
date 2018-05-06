@@ -19,7 +19,7 @@ subroutine guarda_emisiones
   implicit none
   integer :: i,j,l
   integer :: ncid
-  integer :: id_varlong,id_varlat
+  integer :: id_varlong,id_varlat,id_unlimit
   integer :: periodo,it,ikk,id,iu,iit,eit
   integer,dimension(NDIMS):: dim,id_dim
   integer,dimension(nradm+1):: id_var
@@ -106,7 +106,7 @@ subroutine guarda_emisiones
   call check( nf90_put_att(ncid, NF90_GLOBAL, "MECHANISM","MOZART"))
   call check( nf90_put_att(ncid, NF90_GLOBAL, "CREATION_DATE",hoy))
   !  Define las variables
-  call check( nf90_def_var(ncid, "Times", NF90_CHAR, dimids2,id_var(radm+1) ) )
+  call check( nf90_def_var(ncid, "Times", NF90_CHAR, dimids2,id_unlimit ) )
   !  Attributos para cada variable
   call check( nf90_def_var(ncid, "XLONG", NF90_REAL,(/id_dim(3),id_dim(4),id_dim(1)/),id_varlong ) )
   ! Assign  attributes
@@ -123,8 +123,8 @@ subroutine guarda_emisiones
   call check( nf90_put_att(ncid, id_varlat, "units", "degree_north"))
   call check( nf90_put_att(ncid, id_varlat, "axis", "Y") )
 
-  do i=1,nradm
-  if(i.lt.29 .or.i.gt.40) then
+  do i=1,radm
+  if(i.lt.29 .or.i.gt.41) then
   call crea_attr(ncid,4,dimids4,ename(i),cname(i),id_var(i))
   else
   call crea_attr2(ncid,4,dimids4,ename(i),cname(i),id_var(i))
@@ -136,7 +136,7 @@ subroutine guarda_emisiones
   !    Inicia loop de tiempo
   tiempo: do it=iit,eit
     write(6,'(A,x,I3)')'TIEMPO: ', it
-    gases: do ikk=1,nradm
+    gases: do ikk=1,radm
       ea=0.0
       if(ikk.eq.1) then
         if (it.lt.10) then
@@ -149,14 +149,13 @@ subroutine guarda_emisiones
         write(current_date(1:4),'(I4)') julyr
         Times(1,1)=current_date(1:19)
         if (periodo.eq. 1) then
-          call check( nf90_put_var(ncid,id_var(nradm+1),Times,start=(/1,it+1/)) )
+          call check( nf90_put_var(ncid, id_unlimit,Times,start=(/1,it+1/)) )
           call check( nf90_put_var(ncid, id_varlong,xlon,start=(/1,1,it+1/)) )
           call check( nf90_put_var(ncid, id_varlat,xlat,start=(/1,1,it+1/)) )
         else
-          call check( nf90_put_var(ncid,id_var(nradm+1),Times,start=(/1,it-11/)) )
+          call check( nf90_put_var(ncid, id_unlimit,Times,start=(/1,it-11/)) )
           call check( nf90_put_var(ncid, id_varlong,xlon,start=(/1,1,it-11/)) )
           call check( nf90_put_var(ncid, id_varlat,xlat,start=(/1,1,it-11/)) )
-
         endif
       end if   ! for kk == 1
       do i=1, dim(3)
